@@ -1,3 +1,4 @@
+#include<X11/XF86keysym.h>
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -63,16 +64,16 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL }; */
-static const char *dmenucmd[]    = { "dmenu_run", "-fn", dmenufont, "-h 25",  NULL };
+static const char *dmenucmd[]    = { "dmenu_run", "-fn", dmenufont, "-h", "25",  NULL };
 static const char *termcmd[]     = { "alacritty", NULL };
 static const char *scrotcmd[]    = { "scrot", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
-static const char *privatebrowsercmd[]  = { "firefox --private-window", NULL };
+static const char *privatebrowsercmd[]  = { "firefox", "--private-window", NULL };
 static const char *shutdowncmd[] = { "/home/zayac/dox/dots/dmenu/dmenu_shutdown", NULL };
-static const char *incbrightcmd[] = { "sudo light -A 2", NULL };
-static const char *decbrightcmd[] = { "sudo light -U 2", NULL };
-static const char *incvolcmd[] = { "amixer -D pulse sset Master 5%+ unmute", NULL };
-static const char *decvolcmd[] = { "amixer -D pulse sset Master 5%- unmute", NULL };
+static const char *incbrightcmd[] = { "sudo", "light", "-A", "2", NULL };
+static const char *decbrightcmd[] = { "sudo", "light", "-U", "2", NULL };
+static const char *incvolcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", "unmute", NULL };
+static const char *decvolcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key             function        argument */
@@ -115,11 +116,11 @@ static Key keys[] = {
 	{ NULL,                         XK_Print,       spawn,          {.v = scrotcmd } },
 	{ MODKEY,                       XK_backslash,   spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_backslash,   spawn,          {.v = privatebrowsercmd } },
-	/* { NULL, 						XK_XF86PowerOff,spawn,          {.v = shutdowncmd } }, */
-	/* { NULL,							XK_F86MonBrightnessUp,	spawn,	{.v = incbrightcmd} }, */
-	/* { NULL,							XK_F86MonBrightnessDown,spawn,	{.v = decbrightcmd} }, */
-	/* { NULL,							XK_F86AudioRaiseVolume,	spawn,	{.v = incvolcmd} }, */
-	/* { NULL,							XK_F86AudioLowerVolume,	spawn,	{.v = decvolcmd} }, */
+	{ NULL, 						XF86XK_PowerOff,spawn,          {.v = shutdowncmd } },
+	{ NULL,							XF86XK_MonBrightnessUp,	spawn,	{.v = incbrightcmd} },
+	{ NULL,							XF86XK_MonBrightnessDown,spawn,	{.v = decbrightcmd} },
+	{ NULL,							XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolcmd} },
+	{ NULL,							XF86XK_AudioLowerVolume,	spawn,	{.v = decvolcmd} },
 };
 
 /* button definitions */
