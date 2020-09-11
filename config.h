@@ -1,4 +1,5 @@
 #include<X11/XF86keysym.h>
+#include "movestack.c"
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -82,6 +83,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,           togglebar,      {0} },
 	{ MODKEY,                       XK_j,           focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,           focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,			movestack,      {.i = +1 } },
+   	{ MODKEY|ShiftMask,             XK_k,			movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_i,           incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_p,           incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,           setmfact,       {.f = -0.05} },
