@@ -1,5 +1,6 @@
 #include<X11/XF86keysym.h>
 #include "movestack.c"
+#include "selfrestart.c"
 /* #include "fibonacci.c" */
 /* See LICENSE file for copyright and license details. */
 
@@ -120,13 +121,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                           6)
 	TAGKEYS(                        XK_8,                           7)
 	TAGKEYS(                        XK_9,                           8)
+    { MODKEY|ShiftMask,             XK_r,			self_restart,   {0} },
 	{ MODKEY|ShiftMask,             XK_q,           quit,           {0} },
 	{ NULL,                         XK_Print,       spawn,          {.v = scrotcmd } },
 	{ MODKEY,                       XK_backslash,   spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_backslash,   spawn,          {.v = privatebrowsercmd } },
 	{ NULL, 						XF86XK_PowerOff,spawn,          {.v = shutdowncmd } },
-	{ NULL,							XF86XK_MonBrightnessUp,	spawn,	{.v = incbrightcmd} },
-	{ NULL,							XF86XK_MonBrightnessDown,spawn,	{.v = decbrightcmd} },
+	{ NULL,							XF86XK_MonBrightnessUp,		spawn,	{.v = incbrightcmd} },
+	{ NULL,							XF86XK_MonBrightnessDown,	spawn,	{.v = decbrightcmd} },
 	{ NULL,							XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolcmd} },
 	{ NULL,							XF86XK_AudioLowerVolume,	spawn,	{.v = decvolcmd} },
 };
