@@ -1,7 +1,7 @@
 #include<X11/XF86keysym.h>
 #include "movestack.c"
 #include "selfrestart.c"
-/* #include "fibonacci.c" */
+#include "fibonacci.c"
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -14,7 +14,7 @@ static const int usealtbar          = 1;        /* 1 means use non-dwm status ba
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
 static const char *altbarcmd        = "/bin/polybarstart"; /* Alternate bar launch command */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "monospace:size=10", "FontAwesome:style=Regular:pixelsize=10;3", "Font Awesome 5 Brands:pixelsize=11;3", "Font Awesome 5 Free Regular:pixelsize=10;3", "Font Awesome 5 Free Solid:style=Solid:pixelsize:10;3"};
 static const char dmenufont[]       = "Cantarell:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -28,7 +28,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -46,7 +47,6 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
-#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -100,6 +100,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,           setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,           setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,           setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_s,           setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_f,		    togglefullscr,  {0} },
 	{ MODKEY,                       XK_space,       setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,       togglefloating, {0} },
