@@ -15,7 +15,7 @@ static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
 static const char *altbarcmd        = "/bin/polybarstart"; /* Alternate bar launch command */
 static const char *fonts[]          = { "monospace:size=10", "FontAwesome:style=Regular:pixelsize=10;3", "Font Awesome 5 Brands:pixelsize=11;3", "Font Awesome 5 Free Regular:pixelsize=10;3", "Font Awesome 5 Free Solid:style=Solid:pixelsize:10;3"};
-static const char dmenufont[]       = "Cantarell:size=15";
+static const char dmenufont[]       = "Cantarell:size=11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -80,6 +80,7 @@ static const char *incbrightcmd[] = { "sudo", "light", "-A", "2", NULL };
 static const char *decbrightcmd[] = { "sudo", "light", "-U", "2", NULL };
 static const char *incvolcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", "unmute", NULL };
 static const char *decvolcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", "unmute", NULL };
+static const char *mutevolcmd[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key             function        argument */
@@ -132,6 +133,7 @@ static Key keys[] = {
 	{ NULL,							XF86XK_MonBrightnessDown,	spawn,	{.v = decbrightcmd} },
 	{ NULL,							XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolcmd} },
 	{ NULL,							XF86XK_AudioLowerVolume,	spawn,	{.v = decvolcmd} },
+	{ NULL,							XF86XK_AudioMute,	spawn,		{.v = mutevolcmd} },
 };
 
 /* button definitions */
